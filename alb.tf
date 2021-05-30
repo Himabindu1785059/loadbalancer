@@ -12,3 +12,4 @@ resource "aws_lb" "my_aws_alb" {
   
   ip_address-type    ="ipv4"
   load_balancer-type ="application"
+}
