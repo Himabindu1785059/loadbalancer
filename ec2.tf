@@ -1,13 +1,14 @@
 resource "aws_instance" "base"
-ami =
-instance_typy = "t2.micro"
+ami = "ami-02f0b22b2e722caaa"
+instance_type = "t2.micro"
 count = 2 
-key_name ="${aws_key_pair.key_name}"
+key_name = "keypair9"
 vpc_security_group_ids = [aws_security_group.allow_ports.id]
 user-data= <<-EOF
              #!/bin/bash
              yum install -y
-             echo "hello azure $(hostname  -f)" > /var/www/html/index.html
+             yum install httpd
+             echo "hello aws $(hostname  -f)" > /var/www/html/index.html
              service httpd start
              chkconfig httpd on
 EOF
@@ -17,6 +18,4 @@ tags = {
 }
 
 
-resource "aws_key_pair" "keypair" 
-  key-name   = "keypair9"
-  public_key = 
+
