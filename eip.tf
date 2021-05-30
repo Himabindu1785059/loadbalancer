@@ -1,10 +1,10 @@
-resource "aws-eip' "myeip" {
+resource "aws-eip" "myeip" {
   count = length(aws_instance.base)
   vpc = true
-  instance ="${element(aws_instance.base.*.id,count.index}"
+  instance ="${element(aws_instance.base.*.id,count.index)}"
   
    tags = {
-     name ="default vpc"
+     name ="eip.bindu{count.index + 1}"
    }
 }   
    
