@@ -1,10 +1,10 @@
-resorce "aws_lb_listener" "elb listener" {
+resource "aws_lb_listener" "elb listener" {
    
- load -balancer_arn = aws_lb.my-aws-alb.arn
-       port                = 80
-       protocol            = "HTTP"
+ load_balancer_arn = aws_lb.my-aws-alb.arn
+       port               = 80
+       protocol           = "HTTP"
        default_action {
-         target_group_arn = "${aws_lb-target_group.my-target.group.arn}"
+         target_group_arn = "${aws_lb_target_group.my-target.group.arn}"
          type             = "forward"
        } 
 }
